@@ -1,0 +1,25 @@
+<header class="navbar">
+    <div class="logo">
+        <h1>{{ websitesettings.title|upper }}</h1>
+    </div>
+    <ul class="nav">
+        <li class="nav-item"><a href="{% url "home" %}">Home</a></li>
+        <li class="nav-item"><a href="{% url "about" %}">About</a></li>
+        <li class="nav-item"><a href="{% url "works" %}">Works</a></li>
+        <li class="nav-item"><a href="{% url "contact" %}">Contact</a></li>
+    </ul>
+    <button class="nav-btn">Let s talk</button>
+    <button class="menu-btn">
+        <span class="bar1"></span>
+        <span class="bar2"></span>
+        <span class="bar3"></span>
+    </button>
+    <div class="menu">
+        <ul>
+            <li class="menu__item"><a href="{% url "home" %}">Home</a></li>
+            <li class="menu__item"><a href="{% url "about" %}">About</a></li>
+            <li class="menu__item"><a href="{% url "works" %}">Works</a></li>
+            <li class="menu__item"><a href="{% url "contact" %}">Contact</a></li>
+        </ul>
+    </div>
+</header>

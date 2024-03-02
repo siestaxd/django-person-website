@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+All Blog
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/blog/all-blog.css' %}">
+{% endblock style %}
+{% block content %}
+<div class="container">
+    {% include "partials\_sidebar.html" %}
+    <div class="content">
+        <input type="search" placeholder="Search..." id="query" name="query" oninput="performSearch(this.value)"/>
+        <ul id="searchResults"></ul>
+        {% for blog in blog %}  
+        <a href="{% url 'blog_detail' blog.slug %}">asdsad</a>
+        <div class="blog_card-item">
+            <div class="card_item-image">
+                <img src="{{ blog.thumb.url }}" alt="">
+            </div>
+            <div class="card_item-content">
+                <h6>
+                    {{ blog.create_date }}
+                </h6>
+                <h1>{{ blog.title }}</h1>
+                <p>{{ blog.description }}</p>
+                <button>read more</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    function performSearch(searchText) {
+        var searchResults = document.getElementById('searchResults');
+
+        // AJAX isteği ile arama sonuçlarını alın
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var results = JSON.parse(xhr.responseText);
+
+                var resultsHTML = '';
+                if (results.length > 0) {
+                    for (var i = 0; i < results.length; i++) {
+                        resultsHTML += '<li><a class="resulItem" href="">' + results[i] + '</a></li>';
+                    }
+                } else {
+                    resultsHTML = '<p>No result found</p>';
+                }
+
+                searchResults.innerHTML = resultsHTML;
+            }
+        };
+        xhr.open('GET', '/search/?query=' + encodeURIComponent(searchText));
+        xhr.send();
+    }
+</script>
+{% endblock %}

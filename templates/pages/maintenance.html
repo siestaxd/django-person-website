@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% for website in websitesettings  %}
+        <meta name="description" content="{{ website.description }}">
+        <meta name="keywords" content="{{ website.keywords }}">
+        <title>BAKIMDAYIZ | {{ website.title }}</title>
+        <link rel="icon" type="image/x-icon" href="{{ website.icon }}">
+    {% endfor %}
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <style>
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+        }
+
+        .maintenance__logo {
+            position: relative;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+
+        .maintenance__logo h1 {
+            font-family: 'Roboto', sans-serif;
+            position: absolute;
+        }
+
+        .maintenance__logo h1:nth-child(1) {
+            color: transparent;
+            -webkit-text-stroke: 2px rgb(0, 57, 244);
+        }
+        
+        .maintenance__logo h1:nth-child(2) {
+            color: rgb(0, 4, 255);
+            -webkit-text-stroke: 1px rgb(17, 0, 255);
+            animation: siesta01 3s ease-in-out infinite;
+        }
+
+        @keyframes siesta01 {
+            0%, 100% {
+                clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 
+                54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+            }
+
+            50% {
+                clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 
+                51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+            }
+        }
+
+        .maintenance__title {
+            font-size: 29px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--dark-text);
+            margin: 0;
+        }
+
+        .maintenance__text {
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: var(--dark-text);
+        }
+
+        .maintenance__text span {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: rgb(17, 0, 255);
+            margin-top: 5px;
+        }
+
+        .maintenance__text span::after {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            right: 0;
+            display: block;
+            width: 2px;
+            height: 15px;
+            background-color: rgb(17, 0, 255);
+        }
+
+        .maintenance__text span::before {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 2px;
+            height: 15px;
+            background-color: rgb(17, 0, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="container maintenance">
+        <div class="content">
+            <div class="maintenance__logo">
+                <h1>{{ textlogo_text }}HAMZABLN</h1>
+                <h1>{{ textlogo_text }}HAMZABLN</h1>
+            </div>
+            <div class="maintenance__title">
+                <h1>BAKIMDAYIZ</h1>
+            </div>
+            <div class="maintenance__text">
+                <p>Şu anda bakımdayız. Lütfen daha sonra tekrar deneyiniz.</p>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

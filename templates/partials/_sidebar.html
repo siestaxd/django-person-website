@@ -1,0 +1,16 @@
+<div class="sidebar">
+    <div class="sidebar__userinfos">
+        <div class="sidebar__userinfos-img">
+            <img src="{{ user_profile_picture.url }}" alt="">
+        </div>
+        <div class="sidebar__userinfos-body">
+            <h1>{{ about.name }}</h1>
+            <p>{{ about.job }}</p>
+        </div>
+    </div>
+    <div class="sidebar__social">
+        {% for social in socialmedia %}
+            <a href="{{ social.url }}" class="social__item"><i class="{{ social.icon }}"></i></a>
+        {% endfor %}
+    </div>
+</div>

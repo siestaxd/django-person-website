@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/pages/index.css' %}">
+{% endblock style %}
+{% block content %}
+    <div class="container index">
+        <div class="card" id="profile">
+            {% for user in home  %}
+            <div class="profile-card-img">
+                <img src="{{ user.image.url }}" alt="">
+            </div>
+            <div class="profile-card-body">
+                <h1>{{ user.title }}</h1>
+                <p>{{ user.description }}</p>
+            </div>
+            {% endfor %}
+            <a href="{% url "about" %}"><i class="bx bx-right-arrow-alt btn-arrow"></i></a>
+        </div>
+        <div class="card" id="about">
+            <div class="card__icon">
+                <i class='bx bx-user-pin'></i>
+            </div>
+            <div class="card__infos">
+                <h4>more about me</h4>
+                <h1>Credential</h1>
+            </div>  
+            <a href="{% url "about" %}"><i class="bx bx-right-arrow-alt btn-arrow"></i></a>
+        </div>
+        <div class="card" id="projects">
+            <div class="card__icon">
+                <img src="https://wpriverthemes.com/gridx/wp-content/uploads/2023/04/my-works.png" alt="">
+            </div>
+            <div class="card__infos">
+                <h4>SHOWCASE</h4>
+                <h1>Projects</h1>
+            </div>  
+            <a href="{% url "works" %}"><i class="bx bx-right-arrow-alt btn-arrow"></i></a>
+        </div>
+        <div class="card" id="blog">
+            <div class="card__bloglist">
+                <ul>
+                    {% for blog in blog %}
+                        <li><a href="">{{ blog.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card__infos">
+                <h1>Blog</h1>
+            </div>
+            <a href=""><i class="bx bx-right-arrow-alt btn-arrow"></i></a>
+        </div>
+        <div class="card" id="social">
+            <div class="social-btn">
+                {% for social in socialmedia  %}
+                <a href="{{ social.link }}" style="--social-bg-color: {{ social.color }}"><i class='{{ social.icon }}'></i></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<script>
+</script>
+{% endblock %}

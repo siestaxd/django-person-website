@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} Works {% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/pages/works.css' %}" />
+{% endblock style %} {% block content %}
+<div class="container">
+  <div class="content">
+    <h1>ALL PROJECTS</h1>
+    {% for repo_name, repo_data in repos_info.items %}
+      <a href="{{ repo_data.link }}"><div class="project__card">
+        <div class="project__card-img">
+          <img src="{{ repo_data.image.url }}" alt=""/>
+        </div>
+        <div class="project__card-body">
+          <h2 class="title">{{ repo_data.name }}</h2>
+          <ul class="project_card-info">
+            <li class="card_info-item">{{ repo_data.issues }} Issues</li>
+            <li class="card_info-item">{{ repo_data.stars }} Stars</li>
+            <li class="card_info-item">{{ repo_data.fork }} Forks</li>
+          </ul>
+        </div>
+      </div></a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

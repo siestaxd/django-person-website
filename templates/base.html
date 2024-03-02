@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ websitesettings.description }}">
+    <meta name="keywords" content="{{ websitesettings.keywords }}">
+    <title>{{ websitesettings.title }} |{% block title %} {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ websitesettings.icon }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- icon,font link -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <!-- style link -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block style %}
+    {% endblock style %}
+</head>
+<body>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            <h1>{% if message.tags %} {{ message.tags }}{% endif %}</h1>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+{% include 'partials/_navbar.html' %}
+{% block content %}
+{% endblock content %}
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+var profile = document.getElementById('profile')
+var about = document.getElementById('about')
+var projects = document.getElementById('projects')
+profile.addEventListener('click', () => {
+  window.location.href = "{% url 'about' %}";
+})
+about.addEventListener('click', () => {
+  window.location.href = "{% url 'about' %}";
+})
+projects.addEventListener('click', () => {
+  window.location.href = "{% url 'about' %}";
+})
+</script>
+{% block javascript %}
+{% endblock javascript %}
+</body>
+</html>

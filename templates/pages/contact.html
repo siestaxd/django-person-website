@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} Contact {% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/pages/contact.css' %}" />
+{% endblock style %} {% block content %}
+<div class="container">
+    <div class="contact-info-container">
+        <h1 class="title">Contact Info</h1>
+        <div class="contact-info-item">
+            <div class="icon">
+                <i class="bx bxs-phone-call"></i>
+            </div>
+            <div class="body">
+                <h2>MAIL US</h2>
+                <h3>hamzabilen2121@gmail.com</h3>
+                <h3>info@hamzabln.com</h3>
+            </div>
+        </div>
+        <!--  -->
+        <div class="contact-info-item">
+            <div class="icon">
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="body">
+                <h2>Contact Us</h2>
+                <h3>hmazabilen2121@gmail.com</h3>
+                <h3>info@hamzabln.com</h3>
+            </div>
+        </div>
+        <!--  -->
+        <div class="contact-info-item">
+            <div class="icon">
+                <i class="bx bxs-location-plus"></i>
+            </div>
+            <div class="body">
+                <h2>LOCATION</h2>
+                <h3>hmazabilen2121@gmail.com</h3>
+                <h3>info@hamzabln.com</h3>
+            </div>
+        </div>
+        <h1>Social İnfo</h1>
+        <ul class="social_links">
+            <a href=""><li class="social_link-item"><i class="bx bxl-instagram"></i></li></a>
+            <a href=""><li class="social_link-item"><i class="bx bxl-linkedin"></i></li></a>
+            <a href=""><li class="social_link-item"><i class="bx bxl-twitter"></i></li></a>
+            <a href=""><li class="social_link-item"><i class="bx bxl-steam"></i></li></a>
+        </ul>
+    </div>
+    <div class="contact-form-container">
+        <form action="" method="POST">
+            <h1>send me message</h1>
+            {% csrf_token %}
+            <input type="text" id="name" name="name" placeholder="Name *" maxlength="50" required>
+            <input type="email" name="mail" id="mail" placeholder="Email *" maxlength="50" required>
+            <input type="text" id="subject" name="subject" placeholder="Your Subject *" maxlength="100" required>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message *" maxlength="1000" required></textarea>
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+</div>
+{% endblock %}

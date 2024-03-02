@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    About
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+{% endblock style %}
+{% block content %}
+<div class="container">
+    {% include "partials\_sidebar.html" %}
+    <div class="content">
+        <p>{{ about.content|safe }}</p>
+        <div class="educationAndExperience_content">
+            <div class="educationAndExperience_contanier">
+                <h1 class="title">Education</h1>
+                {% for education in education %}  
+                <div class="educationAndExperience_item">
+                    <h6>
+                        <span>{{ education.start_date }}</span>
+                        <span>{{ education.end_date }}</span>
+                    </h6>
+                    <h3>
+                        {{ education.school_name }}
+                    </h3>
+                    <h6>
+                        {{ education.department }}
+                    </h6>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="educationAndExperience_contanier">
+                <h1 class="title">Experience</h1>
+                {% for experience in experience %}  
+                <div class="educationAndExperience_item">
+                    <h6>
+                        <span>{{ experience.start_date }}</span>
+                        <span>{{ experience.end_date }}</span>
+                    </h6>
+                    <h3>
+                        {{ experience.company_name }}
+                    </h3>
+                    <h6>
+                        {{ experience.job }}
+                    </h6>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <h1 class="title">Skills</h1>
+        <div class="skills">
+            {% for skill in skills %}
+                <div class="skills__item">
+                    <h2 class="skills__item-title">{{ skill.skill_name }}</h2>
+                    <h6>{{ skill.skill_value }}%</h6>
+                    <div class="skills__item-bar">
+                        <div class="skills__item-bar-fill"><div class="value" style="width: {{ skill.skill_value }}%"></div></div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
