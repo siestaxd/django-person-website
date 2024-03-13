@@ -20,8 +20,7 @@ from django.conf.urls.static import static
 from mysite import settings
 
 urlpatterns = [
-    path('dj-admin/', admin.site.urls),
-    path('admin/', include('dashboard.urls')), # Login and Logout view
+    path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('', include('blog.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
